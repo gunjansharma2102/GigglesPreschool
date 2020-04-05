@@ -1,0 +1,236 @@
+.container{
+  margin:0%;
+  padding: 0%;
+  width: 100%;
+  overflow-x: hidden;
+ }
+
+body {
+  margin:0;
+  font-family: 'Gochi Hand',cursive;
+  font-size: 20px;
+  overflow-x: hidden;
+  width: 100%;
+  background-color: #FCF2E4;
+ }
+
+h2, h3 {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 28px;
+  text-align: center;
+ }
+
+p {
+  font-size: 20px;
+}
+
+/*Header css*/
+
+.myNav {
+  overflow: hidden;
+  background-color: #98785b; /*Brown*/
+  color: #fff;
+  height: 45px; /*height 1*/
+}
+
+.header-img-link {
+  padding-right: 0;
+}
+
+.myNav .header-img-link a{
+  padding: 0.75% 0%;
+}
+
+.header-img {
+  max-width: 26%;
+}
+
+.myNav a {
+  float: left;
+  display: block;
+  color: #fff;
+  text-align: left;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.active {
+  background-color: #a48566;
+  color: white;
+}
+
+.myNav .icon {
+  display: none;
+}
+
+.myNav a:hover {
+  background-color: #a48566;
+  color: white;
+}
+
+
+/*nav ends*/
+
+/*Header css*/
+
+#header{
+  width: 100%;
+}
+
+.logo {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 55%;
+    }
+
+/*header css ends*/
+
+/*profile css*/
+.profilestudent{
+  background: #e89b9b;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: #FCF2E4;
+  border-bottom: #FCF2E4;
+  border-width: 15px;
+  border-style: dashed;
+  border-right: none;
+  border-left: none;
+  text-align: center;
+}
+
+.profileteacher {
+  background: #a8d695;
+  padding-top: 35px;
+  padding-bottom: 40px;
+  border-top: #FCF2E4;
+  border-bottom: #FCF2E4;
+  border-width: 15px;
+  border-style: dashed;
+  border-right: none;
+  border-left: none;
+}
+
+.profilesection {
+  padding-top: 50px;
+}
+
+/*panel*/
+
+.panel-group .panel {
+    margin-bottom: 20px;
+}
+
+.panel-default>.panel-heading {
+    background-color: #FCF2E4;
+}
+
+.panel{
+    border:none;
+    box-shadow:none;
+}
+
+.panel-title {
+  font-size: 28px;
+}
+
+.panel-body {
+  font-size: 20px;
+}
+
+/*panel ends*/
+
+/*contact*/
+
+.contact{
+  background: #a8d695;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  border-top: #FCF2E4;
+  border-width: 15px;
+  border-style: dashed;
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+}
+
+.btnCheck {
+  width: 10%;
+  text-align: center;
+  margin-top: 2.7%;
+}
+
+/*table css*/
+
+.events {
+  padding: 25px;
+}
+
+.mytable {
+  margin-top: 20px;
+  max-height: 250px;
+  overflow-y: scroll;
+  font-size: 18px;
+}
+
+/*messages*/
+
+.greenpills {
+  background: #98785b;
+  color: #fff;
+}
+
+.cohortbtn{
+  margin-top: 2.7%;
+}
+
+a {
+  color: #fff;
+}
+
+button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #98785b;
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover{
+  background-color: #98785b;
+  color: #000;
+  text-decoration: none;
+}
+
+/*mobile css*/
+
+@media screen and (max-width: 480px) {
+
+  .logo{
+    width: 100%;
+  }
+
+  .btnCheck {
+    width: 20%;
+    margin-top: 0%;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+
+  .cohortbtn{
+    margin-top: 8.5%;
+  }
+
+  .mytable{
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+}
