@@ -4,7 +4,10 @@ angular.module('app')
   //Login page controller var
   $scope.username = "";
   $scope.password = "";
-  $scope.user = {};
+
+  //Signup page controller var
+  $scope.baby = false;
+  $scope.user=[];
 
 
   $scope.loginSubmit = function(){
@@ -59,23 +62,23 @@ angular.module('app')
     
     //get all fields data by joining to each.
     //Check by posting whether username and password exists.
-    $http({
-            method: 'GET',
-            url: '/signup',
-            // params: {"pass user}
-          }).then(function successCallback(response) {
-              if(response.data == "Error"){
-                //alert("Some error occurred. Try again.");
-                //Redirect with error back to lgin
-              }else{
-                //alert("Process completed! Check result.");
+    // $http({
+    //         method: 'GET',
+    //         url: '/getSignup',
+    //         // params: {"pass user}
+    //       }).then(function successCallback(response) {
+    //           if(response.data == "Error"){
+    //             //alert("Some error occurred. Try again.");
+    //             //Redirect with error back to lgin
+    //           }else{
+    //             //alert("Process completed! Check result.");
                
-                //Redirect to Login
-              }
-          }, function errorCallback(error) {
-            console.log(error);
-            //Some error occurred page - 404
-          });
+    //             //Redirect to Login
+    //           }
+    //       }, function errorCallback(error) {
+    //         console.log(error);
+    //         //Some error occurred page - 404
+    //       });
   } 
 
   $scope.fpSubmit = function(){

@@ -304,3 +304,11 @@ app.get('/login', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
+app.get('/signup', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/forgotpassword', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
