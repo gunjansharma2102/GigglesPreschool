@@ -1,53 +1,75 @@
-
 angular.module('app')
-.controller('MainController', ['$scope','$http','$state', function ($scope, $http, $state) {
+.controller('MainController', ['$scope','$http','$state','$rootScope', function ($scope, $http, $state, $rootScope) {
 
-  //Login page controller code
+  //Login page controller var
   $scope.username = "";
   $scope.password = "";
+  $scope.user = {};
+
 
   $scope.loginSubmit = function(){
-    
+
     //Check by posting whether username and password exists.
     $http({
             method: 'GET',
-            url: '/login',
+            url: '/getLogin',
             params: {"username":$scope.username,"password":$scope.password}
           }).then(function successCallback(response) {
-              if(response.data == "Error"){
+              console.log("here");
+              console.log(response.data.response);
+              if(response.status == "404"){
                 //alert("Some error occurred. Try again.");
-                //Redirect with error back to lgin
+                //Redirect to 404 page
               }else{
-                //alert("Process completed! Check result.");
-                // $scope.showResult=1;
-                // $scope.child = response.data;
-                //Redirect to dashboard
+                $scope.user = response.data.response;
+                console.log($scope.user);
+                if($scope.user.role=='PRINCIPAL'){
+                    $rootScope.userID =  $scope.user.userID;
+                    $rootScope.role =  $scope.user.role;
+                    $state.go('layout.principal');
+                }
+                if($scope.user.role=='TEACHER'){
+                    $rootScope.userID =  $scope.user.userID;
+                    $rootScope.role =  $scope.user.role;
+                    $state.go('layout.teacher');
+                }
+                if($scope.user.role=='STUDENT'){
+                    $rootScope.userID =  $scope.user.userID;
+                    $rootScope.role =  $scope.user.role;
+                    $state.go('layout.student');
+                }
               }
           }, function errorCallback(error) {
-            console.log(error);
+              console.log(error);
             //Some error occurred page - 404
           });
   } 
 
-  //Signup page controller code
+  $scope.displayBabyForm = function(){
+    $scope.baby = true;
+  }
 
-  //Add fields - $scope.
+  //form user scope
+  //$scope.user.firstName = "";
+  //form object link this for each fields
+  //if $scope.baby = true; add baby fields as well and also 
+  //$scope.user.role = baby;
 
   $scope.signupSubmit = function(){
     
+    //get all fields data by joining to each.
     //Check by posting whether username and password exists.
     $http({
             method: 'GET',
             url: '/signup',
-            // params: {"username":$scope.username,"password":$scope.password}
+            // params: {"pass user}
           }).then(function successCallback(response) {
               if(response.data == "Error"){
                 //alert("Some error occurred. Try again.");
                 //Redirect with error back to lgin
               }else{
                 //alert("Process completed! Check result.");
-                // $scope.showResult=1;
-                // $scope.child = response.data;
+               
                 //Redirect to Login
               }
           }, function errorCallback(error) {
@@ -55,6 +77,9 @@ angular.module('app')
             //Some error occurred page - 404
           });
   } 
-  
+
+  $scope.fpSubmit = function(){
+    //get all fields, usernme, email and new password, put request to update same
+}
 
 }]);

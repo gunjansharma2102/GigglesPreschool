@@ -1,19 +1,66 @@
-
-		<!--Start of header code-->
-		<header class="container">
-			<div id="header">
-				<!--Logo-->
-				<a href="index.html"><img class="logo" src="./images/signup.png" alt="Giggle Preschool"/></a>
-			</div>
-		</header>
-		<!--header ends-->
-		<!--main form starts-->
-		<div class="container">
+<link rel="stylesheet" href="css/mystyle.css">	
+<!--Start of header code-->
+<header class="container">
+	<div id="header">
+		<!--Logo-->
+		<a href="index.html"><img class="logo" src="./images/signup.png" alt="Giggle Preschool"/></a>
+	</div>
+</header>
+<!--header ends-->
+<!--main form starts-->
+<!--main form starts-->
+<div class="container">
+	<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 formSection" id="loginForm"> 
+		<div class="formcover">	
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <form class="justify-content-center" name="signupForm">
+                	<br/>
+                	<h1 class="login col-lg-12 col-md-12 col-sm-12 col-xs-12">Sign Up</h1>
+                	<br/>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    	<span class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        	<p>Are you a</p>
+                        </span>
+                        <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+	                        <input type="radio" id="teacher" name="category" value="Teacher">Teacher
+							<input type="radio" id="baby" name="category" value="Baby" ng-click="displayBabyForm()">Student
+						</span>
+                    </div>
+                    <!--replicate this for each of common signup elements-->
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    	<span class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        	<p>Label</p>
+                        </span>
+                        <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+	                        <!--input field-->
+						</span>
+                    </div>
+                    <!--Addition fields-->
+                    <div ng-show="{{baby}}">
+                    	<!--add baby specific fields here-->
+                    </div>
+                    <!--add more fields-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    	<span class="col-lg-5 col-md-5 col-sm-4 col-xs-4">
+                    		
+                    	</span>
+                    	<button class="submitBtn btn btn-default btn-lg col-lg-2 col-md-2 col-sm-3 col-xs-3" ng-click="signupSubmit()">Sign Up!</button>
+                    	<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    		
+                    	</span>
+                    </div>
+                    
+                    <br/>
+                </form>
+            </div>
+        </div>
+	</div>
+</div>
+		<!-- <div class="container">
 			<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 formSection" id="loginForm"> 
 				<div class="formcover">
-        			
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <form action="" class="justify-content-center">
+                        <form class="justify-content-center" name="signupForm">
                         	<br/>
                         	<h1 class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >Sign Up</h1>
                         	<br/>
@@ -211,25 +258,4 @@
                 </div>
 			</div>
 		</div>
-		<!--ends-->
-		<!--script-->
-
-		<script language="Javascript">
-		function displayBabyForm()
-		{
-
-			document.getElementById("teacherForm").style.display="none";
-			document.getElementById("babyForm").style.display="inline-block"; 
-			document.getElementById("submitButton").style.display="block"; 			
-
-		}
-
-		function displayTeacherForm()
-		{
-			document.getElementById("babyForm").style.display="none";
-			document.getElementById("teacherForm").style.display="inline-block";
-			document.getElementById("submitButton").style.display="block"; 
-
-		}
-		</script>
-		<link rel="stylesheet" href="css/mystyle.css">	
+	

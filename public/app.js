@@ -65,4 +65,37 @@ myApp.config(['$urlRouterProvider','$stateProvider', '$locationProvider', functi
           },
       })
 
+
+      .state('layout.student', {
+        url: '/student',
+        views: {
+            'body@': {
+                templateUrl: '/views/student/studentDashboard.html',
+                controller: 'StudentController',
+              },
+          },
+      })
+
+      .state('layout.teacher', {
+        url: '/teacher',
+        views: {
+            'body@': {
+                templateUrl: '/views/teacher/teacherdashboard.html',
+                controller: 'TeacherController',
+              },
+          },
+      })
+
+      .state('layout.principal', {
+        url: '/principal',
+        views: {
+            'body@': {
+                templateUrl: '/views/principal/principaldashboard.html',
+                controller: 'PrincipalController',
+              },
+          },
+      })
+
+
+
 }]);
