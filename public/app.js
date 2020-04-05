@@ -39,7 +39,7 @@ myApp.config(['$urlRouterProvider','$stateProvider', '$locationProvider', functi
         url: '/login',
         views: {
             'body@': {
-                templateUrl: 'views/login.html',
+                templateUrl: '/views/login.html',
                 controller: 'MainController',
               },
           },
@@ -49,7 +49,7 @@ myApp.config(['$urlRouterProvider','$stateProvider', '$locationProvider', functi
         url: '/signup',
         views: {
             'body@': {
-                templateUrl: 'views/signup.html',
+                templateUrl: '/views/signup.html',
                 controller: 'MainController',
               },
           },
@@ -59,7 +59,7 @@ myApp.config(['$urlRouterProvider','$stateProvider', '$locationProvider', functi
         url: '/forgotpassword',
         views: {
             'body@': {
-                templateUrl: 'views/forgotpassword.html',
+                templateUrl: '/views/forgotpassword.html',
                 controller: 'MainController',
               },
           },
