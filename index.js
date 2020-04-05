@@ -1,11 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser'); 
 var app = express();
-var server = app.listen("https://gigglespreschoolteam17.herokuapp.com/", function(){});
+var server = app.listen(2000, function(){});
 var http = require('http');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(express.static('https://gigglespreschoolteam17.herokuapp.com/public'));
+app.use(express.static(__dirname + '/public'));
 var mysql = require('mysql');
 
 // var con = mysql.createConnection({
