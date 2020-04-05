@@ -58,6 +58,7 @@ label{
 
 /*header css ends*/
 
+
 /*form css*/
 
 .formcover {
@@ -96,44 +97,19 @@ form:before {
     left: 35%;
 }
 
-
-
-/*team page css*/
-
-.team {
-  width: 100%;
-  background-color: rgba(0,0,0,0.3);
-  z-index: -1;
-  border-radius: 10px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+/*login page*/
+.login {
+  color:white; 
+  margin-bottom: 30px;
 }
 
-.teamprofile {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
- 
-.card-img-top{
-  width: 80%;
-  height: 450px;
-  border: rgba(0,0,0,0.3);
-  border-radius: 10px;
-  z-index: -1;
+.login-link {
+  font-size: 20px; color:#fff;
 }
 
-.team p {
-  font-size: 20px;
-}
+/*login ends*/
 
-.card-person {
-  background: #FCF2E4;
-  border: rgba(0,0,0,0.3);
-  border-radius: 10px;
-  z-index: -1;
-  padding: 10px;
-  margin-bottom: 20px;
-}
+
 
 @media screen and (max-width: 480px) {
 

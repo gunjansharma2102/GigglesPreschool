@@ -1,46 +1,50 @@
-		
-		<!--Start of header code-->
-		<header class="container">
-			<div id="header">
-				<!--Logo-->
-				<a href="index.html"><img class="logo" src="./images/loginc1.png" alt="Giggle Preschool"/></a>
-			</div>
-		</header>
-		<!--header ends-->
-		<!--main form starts-->
-		<div class="container">
-			<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 formSection" id="loginForm"> 
-				<div class="formcover">
-        			
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <form action="" class="justify-content-center">
-                        	<br/>
-                        	<h1 class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="color:white; margin-bottom: 30px;">Log In</h1>
-                        	<br/>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <label class="sr-only">Username</label>
-                                <input type="text" class="form-control" placeholder="Your username">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <label class="sr-only">Password</label>
-                                <input type="password" class="form-control" placeholder="Your password">
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            	<span class="col-lg-5 col-md-5 col-sm-4 col-xs-4">
-                            		<a href="/signup"><p style="font-size: 20px; color:#fff">Signup?</p></a>
-                            	</span>
-                            	<button type="submit" class="submitBtn btn btn-default btn-lg col-lg-2 col-md-2 col-sm-3 col-xs-3">Login</button>
-                            	<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                            		<a href="/forgotpassword"><p style="font-size: 20px; color:#fff">Forgot password?</p></a>
-                            	</span>
-                            </div>
-                            
-                            <br/>
-                        </form>
-                    </div>
-                </div>
-			</div>
-		</div>
+<!--CSS-->
+<link rel="stylesheet" href="css/mystyle.css">		
+<!--Start of header code-->
+<header class="container">
+	<div id="header">
+		<!--Logo-->
+		<a href="index.html"><img class="logo" src="./images/loginc1.png" alt="Giggle Preschool"/></a>
+	</div>
+</header>
+<!--header ends-->
 
-		<link rel="stylesheet" href="css/mystyle.css">	
+<!--main form starts-->
+<div class="container">
+	<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 formSection" id="loginForm"> 
+		<div class="formcover">
+			
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <form class="justify-content-center" name="loginForm">
+                	<br/>
+                	<h1 class="login col-lg-12 col-md-12 col-sm-12 col-xs-12">Log In</h1>
+                	<br/>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label class="sr-only">Username</label>
+                        <input name="username" ng-model="username" type="text" class="form-control" placeholder="Your username" required>
+                        <!-- <p ng-show="{{!loginForm.username.$valid}}">Please enter username</p> -->
+                        
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label class="sr-only">Password</label>
+                        <input name="password" ng-model="password" type="password" class="form-control" placeholder="Your password" required>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    	<span class="col-lg-5 col-md-5 col-sm-4 col-xs-4">
+                    		<a href="/signup"><p class="login-link">Signup?</p></a>
+                    	</span>
+                    	<button class="submitBtn btn btn-default btn-lg col-lg-2 col-md-2 col-sm-3 col-xs-3" ng-click="loginSubmit()">Login</button>
+                    	<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    		<a href="/forgotpassword"><p class="login-link">Forgot password?</p></a>
+                    	</span>
+                    </div>
+                    
+                    <br/>
+                </form>
+            </div>
+        </div>
+	</div>
+</div>
+
+		
 		
