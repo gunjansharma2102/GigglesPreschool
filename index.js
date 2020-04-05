@@ -1,12 +1,22 @@
 var express = require('express');
 var bodyParser = require('body-parser'); 
 var app = express();
-var server = app.listen(2000, function(){});
 var http = require('http');
+var port = process.env.PORT || 8000;
+app.listen(port);
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'));
 var mysql = require('mysql');
+
+// var path = require('path')
+// var serveStatic = require('serve-static')
+
+// var app = express()
+// app.use(serveStatic(path.join(__dirname, 'dist')))
+
+
+// console.log('server started ' + port)
 
 // var con = mysql.createConnection({
 //   host: "localhost",
