@@ -143,7 +143,7 @@ app.get('/getSignup', function(req, res) {
 		// teacher.Address = 'ABC apartment';
 		// teacher.PhoneNo = '1234567899';
 		// teacher.email = 'muktika.poddar@tamu.edu';
-		// teacher.IsActive = false;
+		teacher.IsActive = false;
 		//teacher.cohort
 
 		// var userid = 'TEMP121692'; //form it
