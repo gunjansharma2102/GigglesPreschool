@@ -68,100 +68,100 @@ app.get('/getLogin', function(req, res) {
 
 });
 
-// app.get('/signup', function(req, res) {
-// 	console.log(req.query);
+app.get('/getSignup', function(req, res) {
+	console.log(req.query.user);
 
-// 	//if(req.query.role == 'Student'){
-// 		//student signup
-// 		// var student = [];
-// 		// student.FirstName = 'Muktika';
-// 		// student.LastName = 'Poddar';
-// 		// student.Username = 'muktikap'; //notunique
-// 		// student.Password = 'password';
-// 		// student.BirthDate = date;
-// 		// student.BirthDate = '12/16/1992';
-// 		// student.Address = 'ABC apartment';
-// 		// student.PhoneNo = '1234567899';
-// 		// student.email = 'muktika.poddar@tamu.edu';
-// 		// student.IsActive = false;
-// 		//add additional details
+	//if(req.query.role == 'Student'){
+		//student signup
+		// var student = [];
+		// student.FirstName = 'Muktika';
+		// student.LastName = 'Poddar';
+		// student.Username = 'muktikap'; //notunique
+		// student.Password = 'password';
+		// student.BirthDate = date;
+		// student.BirthDate = '12/16/1992';
+		// student.Address = 'ABC apartment';
+		// student.PhoneNo = '1234567899';
+		// student.email = 'muktika.poddar@tamu.edu';
+		// student.IsActive = false;
+		//add additional details
 
-// 		// var userid = 'STMP161292'; //form it
-// 		// var responseMessage = "";
-// 		//create in MySQL - send reponse to UI
-// 		// con.connect(function(err) {
-// 		//   if (err) throw err;
-// 		//   con.query("SELECT * FROM users where userID='"+userid+"'", function (err, result) {
-// 		//     if (err){
-// 		//     	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
-// 		//     }else{
-// 		//     	console.log(result);
-// 		//     	if(result.length > 0){
-// 		//     		//check for new userID until unique//create new record
-// 		//     	}
-// 		//     	if(result.length == 0){
-// 		//     		con.query("insert into users", function (err, result) {
-// 		// 			    if (err) 
-// 		// 			    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
-// 		// 			    else{
-// 		// 			    	console.log(result);
-// 		// 			    	res.send(JSON.stringify({"status": 200, "response": "OK"}));
-// 		// 			    }
-// 		// 			  });
-// 		//     	}
+		// var userid = 'STMP161292'; //form it
+		// var responseMessage = "";
+		//create in MySQL - send reponse to UI
+		// con.connect(function(err) {
+		//   if (err) throw err;
+		//   con.query("SELECT * FROM users where userID='"+userid+"'", function (err, result) {
+		//     if (err){
+		//     	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+		//     }else{
+		//     	console.log(result);
+		//     	if(result.length > 0){
+		//     		//check for new userID until unique//create new record
+		//     	}
+		//     	if(result.length == 0){
+		//     		con.query("insert into users", function (err, result) {
+		// 			    if (err) 
+		// 			    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+		// 			    else{
+		// 			    	console.log(result);
+		// 			    	res.send(JSON.stringify({"status": 200, "response": "OK"}));
+		// 			    }
+		// 			  });
+		//     	}
 		    	
-// 		//     }
+		//     }
 		    
-// 		//   });
-// 		// });
-// 	//}elseif(req.query.role == 'Teacher'){
-// 		// var teacher = [];
-// 		// teacher.FirstName = 'Muktika';
-// 		// teacher.LastName = 'Poddar';
-// 		// teacher.Username = 'muktikap'; //notunique
-// 		// teacher.Password = 'password';
-// 		// teacher.BirthDate = date;
-// 		// teacher.BirthDate = '12/16/1992';
-// 		// teacher.Address = 'ABC apartment';
-// 		// teacher.PhoneNo = '1234567899';
-// 		// teacher.email = 'muktika.poddar@tamu.edu';
-// 		// teacher.IsActive = false;
-// 		//teacher.cohort
+		//   });
+		// });
+	//}elseif(req.query.role == 'Teacher'){
+		// var teacher = [];
+		// teacher.FirstName = 'Muktika';
+		// teacher.LastName = 'Poddar';
+		// teacher.Username = 'muktikap'; //notunique
+		// teacher.Password = 'password';
+		// teacher.BirthDate = date;
+		// teacher.BirthDate = '12/16/1992';
+		// teacher.Address = 'ABC apartment';
+		// teacher.PhoneNo = '1234567899';
+		// teacher.email = 'muktika.poddar@tamu.edu';
+		// teacher.IsActive = false;
+		//teacher.cohort
 
-// 		// var userid = 'TEMP121692'; //form it
-// 		// var responseMessage = "";
-// 		//create in MySQL - send reponse to UI
-// 		// con.connect(function(err) {
-// 		//   if (err) throw err;
-// 		//   con.query("SELECT * FROM users where userID='"+userid+"'", function (err, result) {
-// 		//     if (err){
-// 		//     	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
-// 		//     }else{
-// 		//     	console.log(result);
-// 		//     	if(result.length > 0){
-// 		//     		//check for new userID until unique//create new record
-// 		//     	}
-// 		//     	if(result.length == 0){
-// 		//     		con.query("insert into users", function (err, result) {
-// 		// 			    if (err) 
-// 		// 			    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
-// 		// 			    else{
-// 		// 			    	console.log(result);
-// 		// 			    	res.send(JSON.stringify({"status": 200, "response": "OK"}));
-// 		// 			    }
-// 		// 			  });
-// 		//     	}
+		// var userid = 'TEMP121692'; //form it
+		// var responseMessage = "";
+		//create in MySQL - send reponse to UI
+		// con.connect(function(err) {
+		//   if (err) throw err;
+		//   con.query("SELECT * FROM users where userID='"+userid+"'", function (err, result) {
+		//     if (err){
+		//     	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+		//     }else{
+		//     	console.log(result);
+		//     	if(result.length > 0){
+		//     		//check for new userID until unique//create new record
+		//     	}
+		//     	if(result.length == 0){
+		//     		con.query("insert into users", function (err, result) {
+		// 			    if (err) 
+		// 			    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+		// 			    else{
+		// 			    	console.log(result);
+		// 			    	res.send(JSON.stringify({"status": 200, "response": "OK"}));
+		// 			    }
+		// 			  });
+		//     	}
 		    	
-// 		//     }
+		//     }
 		    
-// 		//   });
-// 		// });
+		//   });
+		// });
 
-// 	//}
-// 	//On UI, if response= ok.
-// 	//teacher or student, display - wait for approval and link to contact us
+	//}
+	//On UI, if response= ok.
+	//teacher or student, display - wait for approval and link to contact us
 	
-// });
+});
 
 // app.get('/getTeachers', function(req, res) {
 // 	console.log(req.query);

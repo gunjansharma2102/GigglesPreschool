@@ -27,7 +27,7 @@
 							<!--ng-click="displayBabyForm()"-->
 						</span>
                     </div>
-                    <!--replicate this for each of common signup elements-->
+                    
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     	<span class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         	<p>First name:</p>
@@ -48,19 +48,19 @@
 					</div>
 					<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     	<span class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        	<p>username:</p>
+                        	<p>Username:</p>
                         </span>
                         <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-							<input name="user.username" ng-model="user.username" type="text" class="form-control" placeholder="Your username" required>
+							<input name="user.username" ng-model="user.username" type="text" class="form-control" placeholder="Choose a username" required>
 							<!--input field-->
 						</span>
 					</div>
 					<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     	<span class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        	<p>password:</p>
+                        	<p>Password:</p>
                         </span>
                         <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-							<input name="user.password" ng-model="user.password" type="password" class="form-control" placeholder="Your password" required>
+							<input name="user.password" ng-model="user.password" type="password" class="form-control" placeholder="Choose a password" required>
 							<!--input field-->
 						</span>
 					</div>
@@ -105,8 +105,8 @@
                         	<p>Gender:</p>
                         </span>
                         <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-							<select id="gender" ng-model="user.gender" class="form-control" name="user.gender">
-								<option>Male</option>
+							<select id="gender" ng-model="user.gender" class="form-control" name="user.gender" required>
+								<option selected>Male</option>
 								<option>Female</option>
 								<option>Other</option>
 						  </select>
@@ -157,22 +157,16 @@
 								<p>Blood Group:</p>
 							</span>
 							<span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-								<select id="bloodGroup" ng-model="user.bloodGroup" class="form-control" name="user.bloodGroup">
-									<option>A Positive</option>
-									<option>A Negative</option>
-									<option>A Unknown</option>
-									<option>B Positive</option>
-									<option>B Negative</option>
-									<option>B Unknown</option>
-									<option>AB Positive</option>
-									<option>AB Negative</option>
-									<option>AB Unknown</option>
-									<option>O Positive</option>
-									<option>O Negative</option>
-									<option>O Unknown</option>
-									<option>Unknown</option>
+								<select id="bloodGroup" ng-model="user.bloodGroup" class="form-control" name="user.bloodGroup" value="A+" required>
+									<option selected>A+</option>
+									<option>A-</option>
+									<option>B+</option>
+									<option>B-</option>
+									<option>AB+</option>
+									<option>AB-</option>
+									<option>O+</option>
+									<option>O-</option>
 							  </select>
-								<!--input field-->
 							</span>
 						</div>
                     </div>
@@ -193,206 +187,5 @@
         </div>
 	</div>
 </div>
-		<!-- <div class="container">
-			<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 formSection" id="loginForm"> 
-				<div class="formcover">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <form class="justify-content-center" name="signupForm">
-                        	<br/>
-                        	<h1 class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >Sign Up</h1>
-                        	<br/>
-					
-					<div class="signUpForm" >
-					<form style="display: inline-block;">
-					  <div class="col-25">
-					  <label for="category">Are you a:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="radio" id="teacher" name="category" value="Teacher" onClick="displayTeacherForm()">
-					  <label for="teacher">Teacher</label>
-					  <input type="radio" id="baby" name="category" value="Baby" onClick="displayBabyForm()">
-					  <label for="baby">Baby/Parent</label><br>
-					  </div>
-					  
-					  <div class = "teacherForm" id = "teacherForm" style="display: none;" >
-					  <div class="col-25">
-					  <label for="fname">First name:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="text" id="fname" name="fname"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="lname">Last name:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="text" id="lname" name="lname"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="uname">Username:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="text" id="uname" name="uname"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="password">Password:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="password" id="password" name="password"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="birthDate">Birth Date:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="date" id="birthDate" name="birthDate"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="address">Address:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="text" id="address" name="address"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="phoneNumber">Phone Number:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="tel" id="phoneNumber" name="phoneNumber"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="email">E-Mail:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="email" id="email" name="email"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for = "gender">Gender:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="radio" id="male" name="gender" value="male">
-					  <label for="male">Male</label>
-					  <input type="radio" id="female" name="gender" value="female">
-					  <label for="female">Female</label>
-					  <input type="radio" id="other" name="gender" value="other">
-					  <label for="other">Other</label>
-					  </div>
-					  </div>
-					  
-					  <div class = "babyForm" id = "babyForm" style="display: none;">
-					  <div class="col-25">
-					  <label for="fname">First name:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="text" id="fname" name="fname"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="lname">Last name:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="text" id="lname" name="lname"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="fatherName">Father's name:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="text" id="fatherName" name="fatherName"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="mname">Mother's name:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="text" id="mname" name="mname"><br>
-					  </div>					  
-					  <div class="col-25">
-					  <label for="uname">Username:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="text" id="uname" name="uname"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="password">Password:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="password" id="password" name="password"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="birthDate">Birth Date:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="date" id="birthDate" name="birthDate"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="address">Address:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="text" id="address" name="address"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="phoneNumber">Phone Number:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="tel" id="phoneNumber" name="phoneNumber"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="email">E-Mail:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="email" id="email" name="email"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for = "gender">Gender:</label>
-					  </div>
-					  <div class="col-75">					 
-					  <input type="radio" id="male" name="gender" value="male">					  		  
-					  <label for="male">Male</label>
-					  <input type="radio" id="female" name="gender" value="female">
-					  <label for="female">Female</label>
-					  <input type="radio" id="other" name="gender" value="other">
-					  <label for="other">Other</label>
-					  </div>
-					   <div class="col-25">
-					  <label for="secondaryPhoneNumber">2nd Number:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="tel" id="secondaryPhoneNumber" name="secondaryPhoneNumber"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="secondaryEmail">2nd E-Mail:</label>
-					  </div>
-					  <div class="col-75">
-					  <input type="email" id="secondaryEmail" name="secondaryEmail"><br>
-					  </div>
-					  <div class="col-25">
-					  <label for="bloodGroup">Blood Group:</label>
-					  </div>
-					  <div class="col-75">
-					  <select id="bloodGroup" name="bloodGroup">
-							<option>A Positive</option>
-							<option>A Negative</option>
-							<option>A Unknown</option>
-							<option>B Positive</option>
-							<option>B Negative</option>
-							<option>B Unknown</option>
-							<option>AB Positive</option>
-							<option>AB Negative</option>
-							<option>AB Unknown</option>
-							<option>O Positive</option>
-							<option>O Negative</option>
-							<option>O Unknown</option>
-							<option>Unknown</option>
-					  </select><br>
-					  </div>
-					  </div>
-					</form>
-					</div>
-                           
-                            <div class="submitButton" id="submitButton" style="display: none;">
-							<div class="col-lg-8 col-xs-8 col-md-8 col-xs-8 col-lg-pull-2 col-xs-pull-2 col-md-pull-2 col-sm-pull-2 col-lg-offest-2 col-md-offset-2 col-sm-offet-2 col-xs-offset-2">
-                            	<button type="submit" class="saveBtn btn btn-default btn-lg col-lg-12 col-md-12 col-sm-12 col-xs-12">Sign Me Up!</button>
-                            </div>
-                            </div>
-                            <br/>
-                        </form>
-                    </div>
-                </div>
-			</div>
-		</div>
+
 	

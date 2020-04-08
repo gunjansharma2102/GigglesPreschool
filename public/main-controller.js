@@ -6,19 +6,11 @@ angular.module('app')
   $scope.password = "";
 
   //Signup page controller var
-  //$scope.baby = false;
+  $scope.baby = false;
   $scope.user=[];
-
-  //forgotPassword page controller var
-  $scope.oldEmail = "";
-  $scope.oldUsername = "";
-  $scope.newPassword1 = "";
-  $scope.newPassword2 = "";
 
 
   $scope.loginSubmit = function(){
-    
-    
 
     //Check by posting whether username and password exists.
     $http({
@@ -56,14 +48,9 @@ angular.module('app')
           });
   } 
 
-  // $scope.displayBabyForm = function(){
-  //   console.log("baby");
-  //   $scope.baby = true;
-  // }
-  // $scope.disableBabyForm = function(){
-  //   console.log("babyfalse");
-  //   $scope.baby = false;
-  // }
+  $scope.displayBabyForm = function(){
+    $scope.baby = true;
+  }
 
   //form user scope
   //$scope.user.firstName = "";
@@ -72,8 +59,6 @@ angular.module('app')
   //$scope.user.role = baby;
 
   $scope.signupSubmit = function(){
-    console.log($scope.user)
-    
     
     //get all fields data by joining to each.
     //Check by posting whether username and password exists.
@@ -97,7 +82,6 @@ angular.module('app')
   } 
 
   $scope.fpSubmit = function(){
-    
     //get all fields, usernme, email and new password, put request to update same
 }
 
