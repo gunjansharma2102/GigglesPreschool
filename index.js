@@ -77,21 +77,28 @@ app.get('/getLogin', function(req, res) {
 
 app.get('/getSignup', function(req, res) {
 	//console.log(req.query);
+	alert("Hello");
+	console.log(req.query.role, req.query.firstName);
 
 	if(req.query.role == 'STUDENT'){
 		//student signup
 		console.log(req.query.role, req.query.firstName);
-		// var student = [];
-		// student.firstName = req.query.firstName;
-		// // student.lastName = 'Poddar';
-		// // student.Username = 'muktikap'; //notunique
-		// // student.Password = 'password';
-		// // student.BirthDate = date;
-		// // student.BirthDate = '12/16/1992';
-		// // student.Address = 'ABC apartment';
-		// // student.PhoneNo = '1234567899';
-		// // student.email = 'muktika.poddar@tamu.edu';
-		// student.IsActive = false;
+		var student = [];
+		student.firstName = req.query.firstName;
+		student.lastName = req.query.lastName;
+		student.username = req.query.username;
+		student.password = req.query.password;
+		student.dateOfBirth = req.query.dateOfBirth;
+		student.address = req.query.address;
+		student.phoneNumber = req.query.phoneNumber;
+		student.email = req.query.email;
+		student.gender = req.query.gender;
+		student.fatherName = req.query.fatherName;
+		student.motherName = req.query.motherName;
+		student.secondPhoneNumber = req.query.secondPhoneNumber;
+		student.secondEmail = req.query.secondEmail;
+		student.bloodGroup = req.query.bloodGroup;
+		student.IsActive = false;
 		//add additional details
 
 		// var userid = 'STMP161292'; //form it
@@ -124,7 +131,16 @@ app.get('/getSignup', function(req, res) {
 		// });
 	}else if(req.query.role == 'TEACHER'){
 		console.log(req.query.role, req.query.firstName);
-		// var teacher = [];
+		var teacher = [];
+		teacher.firstName = req.query.firstName;
+		teacher.lastName = req.query.lastName;
+		teacher.username = req.query.username;
+		teacher.password = req.query.password;
+		teacher.dateOfBirth = req.query.dateOfBirth;
+		teacher.address = req.query.address;
+		teacher.phoneNumber = req.query.phoneNumber;
+		teacher.email = req.query.email;
+		teacher.gender = req.query.gender;
 		// teacher.FirstName = 'Muktika';
 		// teacher.LastName = 'Poddar';
 		// teacher.Username = 'muktikap'; //notunique
@@ -134,7 +150,7 @@ app.get('/getSignup', function(req, res) {
 		// teacher.Address = 'ABC apartment';
 		// teacher.PhoneNo = '1234567899';
 		// teacher.email = 'muktika.poddar@tamu.edu';
-		// teacher.IsActive = false;
+		teacher.IsActive = false;
 		//teacher.cohort
 
 		// var userid = 'TEMP121692'; //form it

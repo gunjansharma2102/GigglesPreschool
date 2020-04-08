@@ -22,8 +22,8 @@
                         	<p>Are you a</p>
                         </span>
                         <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-	                        <input type="radio" id="teacher" name="category" value="Teacher" ng-model="teacherOrStudent" ng-value="false" >Teacher
-							<input type="radio" id="baby" name="category" value="Baby" ng-model="teacherOrStudent" ng-value="true">Student
+	                        <input type="radio" id="teacher" name="user.category" value="TEACHER" ng-model="user.category" ng-value="false" >Teacher
+							<input type="radio" id="baby" name="user.category" value="BABY" ng-model="user.category" ng-value="true">Student
 							<!--ng-click="displayBabyForm()"-->
 						</span>
                     </div>
@@ -114,7 +114,7 @@
 						</span>
                     </div>
                     <!--Addition fields-->
-                    <div ng-show="teacherOrStudent">
+                    <div ng-show="user.category">
 						<!--add baby specific fields here-->
 						<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<span class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
