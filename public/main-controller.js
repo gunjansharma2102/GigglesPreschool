@@ -66,7 +66,7 @@ angular.module('app')
       $http({
               method: 'GET',
               url: '/getSignup',
-              params: {"role":"STUDENT","firstName":$scope.user.firstName} //pass teacher specific parameters, check if displayes on console of node
+              params: {"role":"STUDENT","firstName":$scope.user.firstName,"lastName":$scope.user.lastName,"username":$scope.user.username,"password":$scope.user.password,"dateOfBirth":$scope.user.dateOfBirth,"address":$scope.user.address,"phoneNumber":$scope.user.phoneNumber,"email":$scope.user.email,"gender":$scope.user.gender,"fatherName":$scope.user.fatherName,"motherName":$scope.user.motherName,"secondPhoneNumber":$scope.user.secondPhoneNumber,"secondEmail":$scope.user.secondEmail,"bloodGroup":$scope.user.bloodGroup} //pass student specific parameters, check if displayes on console of node
             }).then(function successCallback(response) {
                 if(response.data == "Error"){
                   //alert("Some error occurred. Try again.");
@@ -84,8 +84,8 @@ angular.module('app')
         $http({
               method: 'GET',
               url: '/getSignup',
-              params: {"role":"TEACHER","firstName":$scope.user.firstName} 
-              // params: {"pass user}//pass teacher specific parameters, check if displayes on console of node
+              //params: {"role":"TEACHER","firstName":$scope.user.firstName} 
+              params: {"role":"STUDENT","firstName":$scope.user.firstName,"lastName":$scope.user.lastName,"username":$scope.user.username,"password":$scope.user.password,"dateOfBirth":$scope.user.dateOfBirth,"address":$scope.user.address,"phoneNumber":$scope.user.phoneNumber,"email":$scope.user.email,"gender":$scope.user.gender}// params: {"pass user}//pass teacher specific parameters, check if displayes on console of node
             }).then(function successCallback(response) {
                 if(response.data == "Error"){
                   //alert("Some error occurred. Try again.");
