@@ -60,25 +60,43 @@ angular.module('app')
 
   $scope.signupSubmit = function(){
     
-    //get all fields data by joining to each.
-    //Check by posting whether username and password exists.
-    // $http({
-    //         method: 'GET',
-    //         url: '/getSignup',
-    //         // params: {"pass user}
-    //       }).then(function successCallback(response) {
-    //           if(response.data == "Error"){
-    //             //alert("Some error occurred. Try again.");
-    //             //Redirect with error back to lgin
-    //           }else{
-    //             //alert("Process completed! Check result.");
-               
-    //             //Redirect to Login
-    //           }
-    //       }, function errorCallback(error) {
-    //         console.log(error);
-    //         //Some error occurred page - 404
-    //       });
+    if(baby==true){
+      $http({
+              method: 'GET',
+              url: '/getSignup',
+              // params: {"pass user}/pass teacher specific parameters, check if displayes on console of node
+            }).then(function successCallback(response) {
+                if(response.data == "Error"){
+                  //alert("Some error occurred. Try again.");
+                  //Redirect with error back to lgin
+                }else{
+                  //alert("Process completed! Check result.");
+                 
+                  //Redirect to Login
+                }
+            }, function errorCallback(error) {
+              console.log(error);
+              //Some error occurred page - 404
+            });
+      }else{
+        $http({
+              method: 'GET',
+              url: '/getSignup',
+              // params: {"pass user}//pass teacher specific parameters, check if displayes on console of node
+            }).then(function successCallback(response) {
+                if(response.data == "Error"){
+                  //alert("Some error occurred. Try again.");
+                  //Redirect with error back to lgin
+                }else{
+                  //alert("Process completed! Check result.");
+                 
+                  //Redirect to Login
+                }
+            }, function errorCallback(error) {
+              console.log(error);
+              //Some error occurred page - 404
+            });
+      }
   } 
 
   $scope.fpSubmit = function(){

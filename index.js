@@ -69,7 +69,7 @@ app.get('/getLogin', function(req, res) {
 });
 
 app.get('/getSignup', function(req, res) {
-	console.log(req.query.user);
+	console.log(req.query);
 
 	//if(req.query.role == 'Student'){
 		//student signup
