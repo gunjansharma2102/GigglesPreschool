@@ -3,9 +3,9 @@ angular.module('app')
 
   console.log($rootScope.userID,$rootScope.role);
 
-  // if($rootScope.userID==undefined||$rootScope.role==undefined){
-  //   $state.go('layout.login');
-  // }
+  if($rootScope.userID==undefined||$rootScope.role==undefined){
+    $state.go('layout.login');
+  }
 
   //variables
   $scope.user = {};

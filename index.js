@@ -4,30 +4,31 @@ var app = express();
 var http = require('http');
 var port = process.env.PORT || 8000;
 app.listen(port);
+//var server = app.listen(4000, function(){});
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'));
 var mysql = require('mysql');
 
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "project"
-});
+// var con = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "root",
+//   database: "project"
+// });
 
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  // con.query("CREATE TABLE Cohort(ClassNo varchar (6) NOT NULL PRIMARY KEY ,StartMonth int,StartYear int,EndMonth int,EndYear int,CohortDesc varchar (30))", function (err, result) {
-  //   if (err) 
-  //   	console.log("error!");
-  //   else
-  //   	console.log("Connected!");
-  // });
-});
+// con.connect(function(err) {
+//   if (err) throw err;
+//   console.log("Connected!");
+//   // con.query("CREATE TABLE Cohort(ClassNo varchar (6) NOT NULL PRIMARY KEY ,StartMonth int,StartYear int,EndMonth int,EndYear int,CohortDesc varchar (30))", function (err, result) {
+//   //   if (err) 
+//   //   	console.log("error!");
+//   //   else
+//   //   	console.log("Connected!");
+//   // });
+// });
 
 var result = {};
 app.get('/getLogin', function(req, res) {
@@ -295,19 +296,19 @@ app.get('/getRecNotif', function(req, res) {
 });
 
 
-app.get('/login', function (req, res) {
-    res.sendFile(__dirname + '/public/index.html');
-});
+// app.get('/', function (req, res) {
+//     res.sendFile(__dirname + '/public/index.html');
+// });
 
-app.get('/signup', function (req, res) {
-    res.sendFile(__dirname + '/public/index.html');
-});
+// app.get('/signup', function (req, res) {
+//     res.sendFile(__dirname + '/public/index.html');
+// });
 
-app.get('/forgotpassword', function (req, res) {
-    res.sendFile(__dirname + '/public/index.html');
-});
+// app.get('/forgotpassword', function (req, res) {
+//     res.sendFile(__dirname + '/public/index.html');
+// });
 
-app.get('/principal', function (req, res) {
+app.get('*', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
