@@ -7,14 +7,14 @@
 
 body {
   margin:0;
-  font-family: 'Gochi Hand',cursive;
+  font-family: 'Gochi Hand',Comic Sans MS;
   font-size: 20px;
   overflow-x: hidden;
   width: 100%;
  }
 
 h2, h3 {
-  font-family: 'Gochi Hand', cursive;
+  font-family: 'Gochi Hand',Comic Sans MS;
     font-size: 28px;
  }
 
@@ -233,6 +233,7 @@ p {
 
   body {
     width: 100%;
+    overflow-x: hidden;
   }
 
     /*header*/
@@ -285,7 +286,7 @@ p {
   }
 
   .wwdimage {
-      width: 40%;
+      width: 38%;
       height: 15%;
   }
 

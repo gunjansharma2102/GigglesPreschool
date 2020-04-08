@@ -1,30 +1,33 @@
 var express = require('express');
 var bodyParser = require('body-parser'); 
 var app = express();
-var server = app.listen(4000, function(){});
 var http = require('http');
+var port = process.env.PORT || 8000;
+app.listen(port);
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'));
 var mysql = require('mysql');
 
-// var con = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "root",
-//   database: "project"
-// });
 
-// con.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-//   // con.query("CREATE TABLE Cohort(ClassNo varchar (6) NOT NULL PRIMARY KEY ,StartMonth int,StartYear int,EndMonth int,EndYear int,CohortDesc varchar (30))", function (err, result) {
-//   //   if (err) 
-//   //   	console.log("error!");
-//   //   else
-//   //   	console.log("Connected!");
-//   // });
-// });
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "project"
+});
+
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  // con.query("CREATE TABLE Cohort(ClassNo varchar (6) NOT NULL PRIMARY KEY ,StartMonth int,StartYear int,EndMonth int,EndYear int,CohortDesc varchar (30))", function (err, result) {
+  //   if (err) 
+  //   	console.log("error!");
+  //   else
+  //   	console.log("Connected!");
+  // });
+});
 
 var result = {};
 app.get('/getLogin', function(req, res) {
@@ -45,14 +48,14 @@ app.get('/getLogin', function(req, res) {
 		console.log(result);
 		res.send(JSON.stringify({"status": 200, "response": result}));
 	}
-	if(login.username=='teacher'&&login.password=='password'){
-		result.userID = 'TEMP121692';
-		result.FirstName = 'Muktika';
-		result.LastName = 'Poddar';
-		result.BirthDate = '12/16/1992';
-		result.Address = 'ABC apartment';
-		result.PhoneNo = '1234567899';
-		result.email = 'muktika.poddar@tamu.edu';	
+	if(login.username=='teacher1'&&login.password=='password'){
+		result.userID = 'TEMP000001';
+		// result.FirstName = 'Muktika';
+		// result.LastName = 'Poddar';
+		// result.BirthDate = '12/16/1992';
+		// result.Address = 'ABC apartment';
+		// result.PhoneNo = '1234567899';
+		// result.email = 'muktika.poddar@tamu.edu';	
 		if(result.userID.substring(0, 2)=='TE')
 			result.role = "TEACHER";
 		console.log(result);
@@ -189,74 +192,69 @@ app.get('/getSignup', function(req, res) {
 });
 
 app.get('/getTeachers', function(req, res) {
-	
-	con.connect(function(err) {
-	  if (err)
-	  	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
 
-	  con.query("SELECT * FROM users where userID like 'TE%'", function (err, result) {
-		    if (err)
-		    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+  	con.query("SELECT * FROM users where userID like 'TE%'", function (err, result) {
+	    if (err)
+	    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
 
-		    console.log(result);
-		    res.send(JSON.stringify({"status": 200, "response": result}));
-		  });
-		});
+	    console.log(result);
+	    res.send(JSON.stringify({"status": 200, "response": result}));
+	});
+
 });
 
-// app.get('/getStudents', function(req, res) {
-// 	console.log(req.query);
-// 	//based on teacher id - find crn then find all students in that crn
-// 	//if principal - take crn and based on entered crn, show all students
-// 	// con.connect(function(err) {
-// 	//   if (err)
-// 	//   	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+app.get('/getStudents', function(req, res) {
+	console.log("here",req.query.ClassNo);
+	// if(req.query.ClassNo='')
+	// 	req.query.ClassNo='CRN01';
 
-// 	//   con.query("SELECT * FROM users bla bla", function (err, result) {
-// 	// 	    if (err)
-// 	// 	    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+	con.query("SELECT * FROM users where ClassNo='"+req.query.ClassNo+"' && userID like 'ST%'", function (err, result) {
+	    if (err)
+	    	res.send(JSON.stringify({"status": 200, "response": "ERROR"}));
 
-// 	// 	    console.log(result);
-// 	// 	    res.send(JSON.stringify({"status": 200, "response": result}));
-// 	// 	  });
-// 	// 	});
-// });
+	    console.log(result);
+	    res.send(JSON.stringify({"status": 200, "response": result}));
+	});
 
-// app.get('/getUser', function(req, res) {
-// 	console.log(req.query);
-// 	//take userID from cookie
-// 	// con.connect(function(err) {
-// 	//   if (err)
-// 	//   	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+});
 
-// 	//   con.query("SELECT * FROM users where userID = '"+$userid+"'", function (err, result) {
-// 	// 	    if (err)
-// 	// 	    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+app.get('/getUser', function(req, res) {
 
-// 	// 	    console.log(result);
-// 	// 	    res.send(JSON.stringify({"status": 200, "response": result}));
-// 	//		Send user self details to display on profile
-// 	// 	  });
-// 	// 	});
-// });
+	
+  	con.query("SELECT * FROM users where userID = '"+req.query.userID+"' LIMIT 1", function (err, result) {
+	    if (err)
+	    	res.send(JSON.stringify({"status": 200, "response": "ERROR"}));
 
-// app.get('/getEvents', function(req, res) {
-// 	console.log(req.query);
-// 	//take month year and select query filter in events with where clause to get all isAcitve events of that month and year i.e between 
-// 	//- 01/xx/YYYY to 31/xx/YYYY
-// 	// con.connect(function(err) {
-// 	//   if (err)
-// 	//   	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+	    console.log(result);
+	    res.send(JSON.stringify({"status": 200, "response": result}));
+		
+	});
+	
+});
 
-// 	//   con.query("SELECT * FROM events where IsActive = 'true' AND Date between xx and yy", function (err, result) {
-// 	// 	    if (err)
-// 	// 	    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+app.get('/getInactiveUsers', function(req, res) {
 
-// 	// 	    console.log(result);
-// 	// 	    res.send(JSON.stringify({"status": 200, "response": result}));
-// 	// 	  });
-// 	// 	});
-// });
+  	con.query("SELECT * FROM users where IsActive='0'", function (err, result) {
+	    if (err)
+	    	res.send(JSON.stringify({"status": 200, "response": "ERROR"}));
+
+	    console.log(result);
+	    res.send(JSON.stringify({"status": 200, "response": result}));
+		
+	});
+	
+});
+
+app.get('/getEvents', function(req, res) {
+
+	  con.query("SELECT * FROM ClassEvent where IsActive = '1'", function (err, result) {
+	    if (err)
+	    	res.send(JSON.stringify({"status": 200, "response": "ERROR"}));
+
+	    console.log(result);
+	    res.send(JSON.stringify({"status": 200, "response": result}));
+	  });
+});
 
 // app.get('/getAttendance', function(req, res) {
 // 	console.log(req.query);
@@ -275,54 +273,27 @@ app.get('/getTeachers', function(req, res) {
 // 	// 	});
 // });
 
-// app.get('/getSentNotif', function(req, res) {
-// 	console.log(req.query);
-// 	//take userID 
-// 	// con.connect(function(err) {
-// 	//   if (err)
-// 	//   	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+app.get('/getSentNotif', function(req, res) {
+	
+	con.query("SELECT * FROM notify where UserID = '"+req.query.userID+"'", function (err, result) {
+	    if (err)
+	    	res.send(JSON.stringify({"status": 200, "response": "ERROR"}));
 
-// 	//   con.query("SELECT * FROM events where userid = userid", function (err, result) {
-// 	// 	    if (err)
-// 	// 	    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+	    console.log(result);
+	    res.send(JSON.stringify({"status": 200, "response": result}));
+	  });
+});
 
-// 	// 	    console.log(result);
-// 	// 	    res.send(JSON.stringify({"status": 200, "response": result}));
-// 	// 	  });
-// 	// 	});
-// });
+app.get('/getRecNotif', function(req, res) {
+	con.query("SELECT * FROM notify where RecipientID =  '"+req.query.userID+"'", function (err, result) {
+	    if (err)
+	    	res.send(JSON.stringify({"status": 200, "response": "ERROR"}));
 
-// app.get('/getRecNotif', function(req, res) {
-// 	console.log(req.query);
-// 	//take userID 
-// 	// con.connect(function(err) {
-// 	//   if (err)
-// 	//   	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+	    console.log(result);
+	    res.send(JSON.stringify({"status": 200, "response": result}));
+	  });
+});
 
-// 	//   con.query("SELECT * FROM notify where recepientid = userid", function (err, result) {
-// 	// 	    if (err)
-// 	// 	    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
-
-// 	// 	    console.log(result);
-// 	// 	    res.send(JSON.stringify({"status": 200, "response": result}));
-// 	// 	  });
-// 	// 	});
-// });
-
-// app.get('/getapprove', function(req, res) {
-// 	// con.connect(function(err) {
-// 	//   if (err)
-// 	//   	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
-
-// 	//   con.query("SELECT * FROM users where IsActive = 'false'", function (err, result) {
-// 	// 	    if (err)
-// 	// 	    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
-
-// 	// 	    console.log(result);
-// 	// 	    res.send(JSON.stringify({"status": 200, "response": result}));
-// 	// 	  });
-// 	// 	});
-// });
 
 app.get('/login', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
@@ -333,6 +304,10 @@ app.get('/signup', function (req, res) {
 });
 
 app.get('/forgotpassword', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/principal', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 

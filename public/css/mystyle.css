@@ -7,7 +7,7 @@
 
 body {
   margin:0;
-  font-family: 'Gochi Hand',cursive;
+  font-family: 'Gochi Hand',Comic Sans MS,sans-serif;
   font-size: 28px;
   overflow-x: hidden;
   background-color: #FCF2E4;
@@ -15,8 +15,8 @@ body {
  }
 
 h2, h3 {
-  font-family: 'Gochi Hand', cursive;
-    font-size: 28px;
+  font-family: 'Gochi Hand',Comic Sans MS, sans-serif;
+  font-size: 28px;
 	color:white;
  }
  
