@@ -9,7 +9,7 @@
 			</a>
 		</div>
 		<div class="col-lg-10 col-md-10 col-sm-5 col-xs-5">
-			<a  style="float: right;" href="index.html">Log Out</a>
+			<a  style="float: right;" ng-click="logout">Log Out</a>
 		</div>			
 	</div>
 </header>
@@ -24,20 +24,20 @@
 		<div class="container profileteacher">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<h2>Dorothy Banks<button type="button" class="btn btn-link btn-xs"><i class="fa fa-edit"></i></button></h2><br/>
+					<h2>{{user.FirstName}} {{user.LastName}}<button type="button" class="btn btn-link btn-xs"><i class="fa fa-edit"></i></button></h2><br/>
 				</div>
 				<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-						<p>Birthday: 23 March</p>
+					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						<p>Birthday: {{user.BirthDate | limitTo: 10 }}</p>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
-						<p>Phone: 9797133656</p>
+					<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+						<p>Phone: {{user.PhoneNo}}</p>
 					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-						<p>Email: dorothy.banks@gmail.com</p>
+					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						<p>Email: {{user.Email}}</p>
 					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-						<p>Address: 3234 Wellborn Rd, Bryan, TX 77802</p>
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+						<p>Address: {{user.Address}}</p>
 					</div>
 				</div>
 			</div>
@@ -56,25 +56,19 @@
 			      </div>
 			      <div id="collapse1" class="panel-collapse collapse in">
 			        <div class="panel-body">
-			        	<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			        		<button class="btn greenpills btn-sm"><i class="fa fa-plus"></i> <span>Add Teacher</span></button>
-			        	</div>
-					
-			        	<!-- change table-->
+			        	<!-- Teachers table-->
 			        	 <table class="table">
 						    <thead>
 						      <tr>
-						        <th>Teacher ID - Link to Profile</th>
-						        <th>Name</th>
+						        <th>Teacher Name</th>
 						        <th>Cohort</th> 
 						        <th>Action</th> 
 						      </tr>
 						    </thead>
 						    <tbody>
-						      <tr>
-						        <td>M0111CRN01</td>
-						        <td>Mary Ann</td>
-						        <td>CRN01</td>
+						      <tr ng-repeat="teacher in teachers">
+						        <td>{{teacher.FirstName}} {{teacher.LastName}}</td>
+						        <td>{{teacher.ClassNo}}</td>
 						        <td>
 								
 								<button type="button" class="btn btn-default btn-sm">
@@ -82,28 +76,7 @@
 								</button>
 								</td>
 						      </tr>
-						      <tr>
-						        <td>M2312CRN01</td>
-						        <td>Mark Jacobs</td>
-						        <td>CRN02</td>
-						        <td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td>
-						      </tr>
-						      <tr>
-						        <td>C0311CRN03</td>
-						        <td>Coco Chanel</td>
-						        <td>CRN03</td>
-						        <td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td>
-						      </tr>
+						     
 						    </tbody>
 						  </table>
 			        	<!--table ends-->
@@ -122,7 +95,7 @@
 				  			<form class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
 							  <div class="form-group">
 								<label for="cohortFormControlSelect">Cohort:</label>
-								<select class="form-control" id="exampleFormControlSelect1">
+								<select class="form-control" id="exampleFormControlSelect1" ng-model="cohortSelected">
 								  <option>CRN01</option>
 								  <option>CRN02</option>
 								  <option>CRN03</option>
@@ -130,10 +103,7 @@
 							  </div>
 							</form>  
 							<span class="col-lg-9 col-md-9 col-sm-8 col-xs-8 cohortbtn">
-								<button type="button" class="btn btn-warning">Check</button>
-								
-					        	<button class="btn greenpills btn-sm" style="float:right"><i class="fa fa-plus"></i> <span>Add Student</span></button>
-					        	
+								<button type="button" class="btn btn-warning" ng-click="fetchStudents()">Check</button>
 							</span>
 						</div>
 			        	<!-- change table-->
@@ -141,72 +111,19 @@
 			        	 <table class="table">
 						    <thead>
 						      <tr>
-						        <th>Student ID - View Profile</th>
 						        <th>Student Name</th>
+						        <th>Cohort</th>
 						        <th>Action</th>
 						      </tr>
 						    </thead>
 						    <tbody>
-						      <tr><td>R0505CRN01</td><td>Rachel Greene</td><td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td></tr>
-						      <tr><td>H2406CRN01</td><td>Harish Krishnamoorty</td><td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td></tr>
-						      <tr><td>R1807CRN01</td><td>Ranjith Melow</td><td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td></tr>
-						      <tr><td>B1602CRN01</td><td>Bjon Borg</td><td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td></tr>
-						      <tr><td>M0308CRN01</td><td>Mike Mizanion</td><td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td></tr>
-						      <tr><td>H1512CRN01</td><td>Hardy Sandhu</td><td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td></tr>
-						      <tr><td>G1309CRN01</td><td>Gippy Grewal</td><td>
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td></tr>
-						      <tr><td>J1504CRN01</td><td>John Bradshaw</td><td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td></tr>
-						      <tr><td>P25010CRN01</td><td>Prakash Padukone</td><td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td></tr>
-						      <tr><td>A1204CRN01</td><td>Amir Khan</td><td>
-								
-								<button type="button" class="btn btn-default btn-sm">
-								  <span class="glyphicon glyphicon-remove"></span> 
-								</button>
-								</td></tr>
-						    
+							     <tr ng-repeat="student in students">
+							      	<td>{{student.FirstName}} {{student.LastName}}</td>
+							      	<td>{{student.ClassNo}}
+							      	<td>
+							      		<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
+									</td>
+								 </tr>
 						    </tbody>
 						  </table>
 						 </div>
@@ -226,50 +143,7 @@
 			      <div id="collapse3" class="panel-collapse collapse in">
 			        <div class="panel-body">
 			        	<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<form class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							  <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-6">
-								<label for="monthFormControlSelect">Month:</label>
-								<select class="form-control" id="exampleFormControlSelect1">
-								  <option>January</option>
-								  <option>February</option>
-								  <option>March</option>
-								  <option>April</option>
-								  <option>May</option>
-								  <option>June</option>
-								  <option>July</option>
-								  <option>August</option>
-								  <option>September</option>
-								  <option>October</option>
-								  <option>November</option>
-								  <option>December</option>
-								</select>
-							  </div>
-							  <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-6">
-								<label for="yearFormControlSelect">Year:</label>
-								<select class="form-control" id="exampleFormControlSelect2">
-								  <option>2003</option>
-								  <option>2004</option>
-								  <option>2005</option>
-								  <option>2006</option>
-								  <option>2007</option>
-								  <option>2008</option>
-								  <option>2009</option>
-								  <option>2010</option>
-								  <option>2011</option>
-								  <option>2012</option>
-								  <option>2013</option>
-								  <option>2014</option>
-								  <option>2015</option>
-								</select>
-							  </div>
-							  
-
-							  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin-top: 2.7%;">
-							  	<!-- create new event -->
-							  	<button type="button" class="btn btn-warning">Check</button>
-								<a href="#createEvent" class="btn greenpills btn-sm" data-toggle="modal" style="float: right"><i class="fa fa-plus"></i> <span>Create Event</span></a>
-							  </div>
-							</form>	        	
+							<a href="#createEvent" class="btn greenpills btn-sm" data-toggle="modal" style="float: right"><i class="fa fa-plus"></i> <span>Create Event</span></a>    	
 			       		</div>
 			        	
 			        	<!--events panel-->
@@ -278,6 +152,7 @@
 						    <thead>
 						      <tr>
 						        <th>Name</th>
+						        <th>Class No</th>
 						        <th>Description</th>
 						        <th>Date</th>
 						        <th>Time</th>
@@ -285,11 +160,12 @@
 						      </tr>
 						    </thead>
 						    <tbody>
-						    	<tr>
-						    		<td>Monica Birthday</td>
-						    		<td>We will be celebrating birthday of Monica</td>
-						    		<td>March 03 2020</td>
-						    		<td>2:00 PM </td>
+						    	<tr ng-repeat="event in events">
+						    		<td>{{event.EventName}}</td>
+						    		<td>{{event.ClassNo}}
+						    		<td>{{event.EventDesc}}</td>
+						    		<td>{{event.EventDate  | limitTo: 10}}</td>
+						    		<td>{{event.EventTime}}</td>
 						    		<td>
 						    			<button type="button" class="btn btn-default btn-sm">
 										  <span class="glyphicon glyphicon-edit"></span> 
@@ -298,37 +174,7 @@
 										  <span class="glyphicon glyphicon-remove"></span> 
 										</button>
 									</td>
-								</tr>
-								<tr>
-						    		<td>Painting Competition</td>
-						    		<td>Get Ready! We are going to find the best painters!</td>
-						    		<td>March 04 2020</td>
-						    		<td>1:00 PM </td>
-						    		<td>
-										<button type="button" class="btn btn-default btn-sm">
-										  <span class="glyphicon glyphicon-edit"></span> 
-										</button>
-										<button type="button" class="btn btn-default btn-sm">
-										  <span class="glyphicon glyphicon-remove"></span> 
-										</button>
-									</td>
-								</tr>
-								<tr>
-						    		<td>Craft for environment</td>
-						    		<td>Let's join together and use our imagination to make a better world</td>
-						    		<td>March 05 2020</td>
-						    		<td>12:00 PM </td>
-						    		<td>
-										<button type="button" class="btn btn-default btn-sm">
-										  <span class="glyphicon glyphicon-edit"></span> 
-										</button>
-										<button type="button" class="btn btn-default btn-sm">
-										  <span class="glyphicon glyphicon-remove"></span> 
-										</button>
-									</td>
-								</tr>
-						      
-						    
+								
 						    </tbody>
 						  </table>
 						 </div>
@@ -346,19 +192,30 @@
 			        <div class="panel-body">
 
 						<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						  <button class="btn greenpills btn-sm">Received</button>
-						  <button class="btn greenpills btn-sm">Sent</button>
+						  <button class="btn greenpills btn-sm" ng-click="getRecMessages">Received</button>
+						  <button class="btn greenpills btn-sm" ng-click="getSentMessages">Sent</button>
 						  <!-- add new message -->
 						  <button class="btn greenpills btn-sm" style="float: right"><a href="#addMessageModal" data-toggle="modal"><i class="fa fa-plus"></i> <span>Compose Message</span></a></button>
 						</div>
-						
-												
-						
-			        	
-			        	
 			        	<!-- change table-->
 			        	<div class="mytable container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			        	 <table class="table">
+			        	 <table class="table" ng-show="receive">
+						    <thead>
+						      <tr>
+						        <th>Date</th>
+						        <th>Message</th>
+						        <th>Sender</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <tr ng-repeat="rec in receivedmess">
+						        <td>{{rec.CreateDate | limitTo:10}}</td>
+						        <td>{{rec.NotifyDesc}}</td>
+						        <td>{{rec.UserID}}</td>
+						      </tr>				      
+						    </tbody>
+						  </table>
+						  <table class="table" ng-show="!receive">
 						    <thead>
 						      <tr>
 						        <th>Date</th>
@@ -367,16 +224,11 @@
 						      </tr>
 						    </thead>
 						    <tbody>
-						      <tr>
-						        <td>Feb 02 2020</td>
-						        <td>Hi, I see that Rachel is not in today. Can you contact her parents?</td>
-						        <td>Mary Ann</td>
-						      </tr>
-						      <tr>
-						        <td>Feb 01 2020</td>
-						        <td>Hi, I see Mark is not here today. Please speak to his parents.</td>
-						        <td>Coco Chanel</td>
-						      </tr>					      
+						      <tr ng-repeat="sent in sentmess">
+						        <td>{{sent.CreateDate | limitTo:10}}</td>
+						        <td>{{sent.NotifyDesc}}</td>
+						        <td>{{sent.RecipientID}}</td>
+						      </tr>				      
 						    </tbody>
 						  </table>
 						</div>
@@ -392,28 +244,33 @@
 			      </div>
 			      <div id="collapse5" class="panel-collapse collapse in">
 			        <div class="panel-body">
-
-			        	<!-- change table-->
 			        	<div class="mytable container col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			        	 <table class="table">
 						    <thead>
 						      <tr>
-						        <th>First Name</th>
-						        <th>Last Name</th>
+						        <th>Name</th>
 								<th>Class Number</th>
 								<th>Action</th>
 						      </tr>
 						    </thead>
 						    <tbody>
-						      <tr>
-						        <td>Tory</td>
-						        <td>Burch</td>
-						        <td>CRN01</td>
+						      <tr ng-repeat="approve in approvals">
+						        <td>{{approve.name}}</td>
+						        <td>
+						        	<div class="form-group">
+										<label for="CohortAssign">Cohort:</label>
+										<select class="form-control" id="assignCohort" ng-model="approve.ClassNo">
+										  <option>CRN01</option>
+										  <option>CRN02</option>
+										  <option>CRN03</option>
+										</select>
+							  		</div>
+							  	</td>
 								<td>
-								<button type="button" class="btn btn-default btn-sm">
+								<button type="button" class="btn btn-default btn-sm" ng-click="approveUser">
 								  <span class="glyphicon glyphicon-ok"></span> 
 								</button>
-								<button type="button" class="btn btn-default btn-sm">
+								<button type="button" class="btn btn-default btn-sm" ng-click="rejectUser">
 								  <span class="glyphicon glyphicon-remove"></span> 
 								</button>
 								</td>

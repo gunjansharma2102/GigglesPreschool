@@ -24,23 +24,20 @@
 		<div class="container profileteacher">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<h2>Mary Ann
-					<button type="button" class="btn btn-link btn-xs"><i class="fa fa-edit"></i></button>
-					</h2>
-					<br/>
+					<h2>{{user.FirstName}} {{user.LastName}}<button type="button" class="btn btn-link btn-xs"><i class="fa fa-edit"></i></button></h2><br/>
 				</div>
 				<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-						<p>Birthday: 1 Nov</p>
+					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						<p>Birthday: {{user.BirthDate | limitTo: 10 }}</p>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
-						<p>Phone: 9191123456</p>
+					<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+						<p>Phone: {{user.PhoneNo}}</p>
 					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-						<p>Email: maryann@gmail.com</p>
+					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						<p>Email: {{user.Email}}</p>
 					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-						<p>Address: 1234 Acorn Rd, Bryan, TX 77805</p>
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+						<p>Address: {{user.Address}}</p>
 					</div>
 				</div>
 			</div>
@@ -66,26 +63,20 @@
 			        	 <table class="table">
 						    <thead>
 						      <tr>
-						        <th>Student ID - View Profile</th>
 						        <th>Student Name</th>
+						        <!-- <th>Action</th> -->
 						      </tr>
 						    </thead>
 						    <tbody>
-						      <tr><td>R0505CRN01</td><td>Rachel Greene</td></tr>
-						      <tr><td>H2406CRN01</td><td>Harish Krishnamoorty</td></tr>
-						      <tr><td>R1807CRN01</td><td>Ranjith Melow</td></tr>
-						      <tr><td>B1602CRN01</td><td>Bjon Borg</td></tr>
-						      <tr><td>M0308CRN01</td><td>Mike Mizanion</td></tr>
-						      <tr><td>H1512CRN01</td><td>Hardy Sandhu</td></tr>
-						      <tr><td>G1309CRN01</td><td>Gippy Grewal</td></tr>
-						      <tr><td>J1504CRN01</td><td>John Bradshaw</td></tr>
-						      <tr><td>P25010CRN01</td><td>Prakash Padukone</td></tr>
-						      <tr><td>A1204CRN01</td><td>Amir Khan</td></tr>
-						    
+							     <tr ng-repeat="student in students">
+							      	<td>{{student.FirstName}} {{student.LastName}}</td>
+							      	<!-- <td>
+							      		<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
+									</td> -->
+								 </tr>
 						    </tbody>
 						  </table>
 						 </div>
-			        	<!--table ends-->
 			        </div>
 			      </div>
 			    </div>
@@ -98,51 +89,9 @@
 			      </div>
 			      <div id="collapse2" class="panel-collapse collapse in">
 			         <div class="panel-body">
+			        	<div class="panel-body">
 			        	<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<form class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							  <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-6">
-								<label for="monthFormControlSelect">Month:</label>
-								<select class="form-control" id="exampleFormControlSelect1">
-								  <option>January</option>
-								  <option>February</option>
-								  <option>March</option>
-								  <option>April</option>
-								  <option>May</option>
-								  <option>June</option>
-								  <option>July</option>
-								  <option>August</option>
-								  <option>September</option>
-								  <option>October</option>
-								  <option>November</option>
-								  <option>December</option>
-								</select>
-							  </div>
-							  <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-6">
-								<label for="yearFormControlSelect">Year:</label>
-								<select class="form-control" id="exampleFormControlSelect2">
-								  <option>2003</option>
-								  <option>2004</option>
-								  <option>2005</option>
-								  <option>2006</option>
-								  <option>2007</option>
-								  <option>2008</option>
-								  <option>2009</option>
-								  <option>2010</option>
-								  <option>2011</option>
-								  <option>2012</option>
-								  <option>2013</option>
-								  <option>2014</option>
-								  <option>2015</option>
-								</select>
-							  </div>
-							  
-
-							  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin-top: 2.7%;">
-							  	<!-- create new event -->
-							  	<button type="button" class="btn btn-warning">Check</button>
-								<a href="#createEvent" class="btn greenpills btn-sm" data-toggle="modal" style="float: right"><i class="fa fa-plus"></i> <span>Create Event</span></a>
-							  </div>
-							</form>	        	
+							<a href="#createEvent" class="btn greenpills btn-sm" data-toggle="modal" style="float: right"><i class="fa fa-plus"></i> <span>Create Event</span></a>    	
 			       		</div>
 			        	
 			        	<!--events panel-->
@@ -151,6 +100,7 @@
 						    <thead>
 						      <tr>
 						        <th>Name</th>
+						        <th>Class</th>
 						        <th>Description</th>
 						        <th>Date</th>
 						        <th>Time</th>
@@ -158,11 +108,12 @@
 						      </tr>
 						    </thead>
 						    <tbody>
-						    	<tr>
-						    		<td>Monica Birthday</td>
-						    		<td>We will be celebrating birthday of Monica</td>
-						    		<td>March 03 2020</td>
-						    		<td>2:00 PM </td>
+						    	<tr ng-repeat="event in events">
+						    		<td>{{event.EventName}}</td>
+						    		<td>{{event.ClassNo}}
+						    		<td>{{event.EventDesc}}</td>
+						    		<td>{{event.EventDate  | limitTo: 10}}</td>
+						    		<td>{{event.EventTime}}</td>
 						    		<td>
 						    			<button type="button" class="btn btn-default btn-sm">
 										  <span class="glyphicon glyphicon-edit"></span> 
@@ -171,37 +122,7 @@
 										  <span class="glyphicon glyphicon-remove"></span> 
 										</button>
 									</td>
-								</tr>
-								<tr>
-						    		<td>Painting Competition</td>
-						    		<td>Get Ready! We are going to find the best painters!</td>
-						    		<td>March 04 2020</td>
-						    		<td>1:00 PM </td>
-						    		<td>
-										<button type="button" class="btn btn-default btn-sm">
-										  <span class="glyphicon glyphicon-edit"></span> 
-										</button>
-										<button type="button" class="btn btn-default btn-sm">
-										  <span class="glyphicon glyphicon-remove"></span> 
-										</button>
-									</td>
-								</tr>
-								<tr>
-						    		<td>Craft for environment</td>
-						    		<td>Let's join together and use our imagination to make a better world</td>
-						    		<td>March 05 2020</td>
-						    		<td>12:00 PM </td>
-						    		<td>
-										<button type="button" class="btn btn-default btn-sm">
-										  <span class="glyphicon glyphicon-edit"></span> 
-										</button>
-										<button type="button" class="btn btn-default btn-sm">
-										  <span class="glyphicon glyphicon-remove"></span> 
-										</button>
-									</td>
-								</tr>
-						      
-						    
+								
 						    </tbody>
 						  </table>
 						 </div>
@@ -217,20 +138,32 @@
 			      </div>
 			      <div id="collapse3" class="panel-collapse collapse in">
 			        <div class="panel-body">
+
 						<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						  <button class="btn greenpills btn-sm">Received</button>
-						  <button class="btn greenpills btn-sm">Sent</button>
+						  <button class="btn greenpills btn-sm" ng-click="getRecMessages">Received</button>
+						  <button class="btn greenpills btn-sm" ng-click="getSentMessages">Sent</button>
 						  <!-- add new message -->
 						  <button class="btn greenpills btn-sm" style="float: right"><a href="#addMessageModal" data-toggle="modal"><i class="fa fa-plus"></i> <span>Compose Message</span></a></button>
 						</div>
-						
-												
-						
-			        	
-			        	
 			        	<!-- change table-->
 			        	<div class="mytable container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			        	 <table class="table">
+			        	 <table class="table" ng-show="receive">
+						    <thead>
+						      <tr>
+						        <th>Date</th>
+						        <th>Message</th>
+						        <th>Sender</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <tr ng-repeat="rec in receivedmess">
+						        <td>{{rec.CreateDate | limitTo:10}}</td>
+						        <td>{{rec.NotifyDesc}}</td>
+						        <td>{{rec.UserID}}</td>
+						      </tr>				      
+						    </tbody>
+						  </table>
+						  <table class="table" ng-show="!receive">
 						    <thead>
 						      <tr>
 						        <th>Date</th>
@@ -239,22 +172,11 @@
 						      </tr>
 						    </thead>
 						    <tbody>
-						      <tr>
-						        <td>Feb 02 2020</td>
-						        <td>Hi, I see that Rachel is not in today. Is everything well?</td>
-						        <td>Rachel Greene</td>
-						      </tr>
-						      <tr>
-						        <td>Jan 20 2020</td>
-						        <td>Hi, Thank you for letting us know of Rachel's absence. Hope she feels well soon.</td>
-						        <td>Rachel Greene</td>
-						      </tr>
-						      <tr>
-						        <td>Jan 01 2020</td>
-						        <td>Hi, Thank you for joining us for New Year Celebration. Hope you had a great time. Please let us know on how we can improve.</td>
-						        <td>Rachel Greene</td>
-						      </tr>
-						      
+						      <tr ng-repeat="sent in sentmess">
+						        <td>{{sent.CreateDate | limitTo:10}}</td>
+						        <td>{{sent.NotifyDesc}}</td>
+						        <td>{{sent.RecipientID}}</td>
+						      </tr>				      
 						    </tbody>
 						  </table>
 						</div>
