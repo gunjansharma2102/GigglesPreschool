@@ -62,7 +62,7 @@ angular.module('app')
     
     
     if($scope.user.category==true){
-
+      
       $http({
               method: 'GET',
               url: '/getSignup',
