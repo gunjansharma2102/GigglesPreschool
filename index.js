@@ -71,7 +71,7 @@ app.get('/getLogin', function(req, res) {
 app.get('/getSignup', function(req, res) {
 	//console.log(req.query);
 
-	if(req.query.role == 'Student'){
+	if(req.query.role == 'STUDENT'){
 		//student signup
 		console.log(req.query.role, req.query.firstName);
 		// var student = [];
@@ -115,7 +115,7 @@ app.get('/getSignup', function(req, res) {
 		    
 		//   });
 		// });
-	}elseif(req.query.role == 'Teacher'){
+	}elseif(req.query.role == 'TEACHER'){
 		console.log(req.query.role, req.query.firstName);
 		// var teacher = [];
 		// teacher.FirstName = 'Muktika';
