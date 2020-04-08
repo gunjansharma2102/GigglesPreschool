@@ -61,10 +61,11 @@ angular.module('app')
   $scope.signupSubmit = function(){
     
     if(baby==true){
+
       $http({
               method: 'GET',
               url: '/getSignup',
-              // params: {"pass user}/pass teacher specific parameters, check if displayes on console of node
+              params: {"role":STUDENT,"firstName":$scope.user.firstName} //pass teacher specific parameters, check if displayes on console of node
             }).then(function successCallback(response) {
                 if(response.data == "Error"){
                   //alert("Some error occurred. Try again.");
@@ -82,6 +83,7 @@ angular.module('app')
         $http({
               method: 'GET',
               url: '/getSignup',
+              params: {"role":TEACHER,"firstName":$scope.user.firstName} 
               // params: {"pass user}//pass teacher specific parameters, check if displayes on console of node
             }).then(function successCallback(response) {
                 if(response.data == "Error"){

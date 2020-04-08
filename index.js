@@ -69,20 +69,21 @@ app.get('/getLogin', function(req, res) {
 });
 
 app.get('/getSignup', function(req, res) {
-	console.log(req.query);
+	//console.log(req.query);
 
-	//if(req.query.role == 'Student'){
+	if(req.query.role == 'Student'){
 		//student signup
+		console.log(req.query.role, req.query.firstName);
 		// var student = [];
-		// student.FirstName = 'Muktika';
-		// student.LastName = 'Poddar';
-		// student.Username = 'muktikap'; //notunique
-		// student.Password = 'password';
-		// student.BirthDate = date;
-		// student.BirthDate = '12/16/1992';
-		// student.Address = 'ABC apartment';
-		// student.PhoneNo = '1234567899';
-		// student.email = 'muktika.poddar@tamu.edu';
+		// student.firstName = req.query.firstName;
+		// // student.lastName = 'Poddar';
+		// // student.Username = 'muktikap'; //notunique
+		// // student.Password = 'password';
+		// // student.BirthDate = date;
+		// // student.BirthDate = '12/16/1992';
+		// // student.Address = 'ABC apartment';
+		// // student.PhoneNo = '1234567899';
+		// // student.email = 'muktika.poddar@tamu.edu';
 		// student.IsActive = false;
 		//add additional details
 
@@ -114,7 +115,8 @@ app.get('/getSignup', function(req, res) {
 		    
 		//   });
 		// });
-	//}elseif(req.query.role == 'Teacher'){
+	}elseif(req.query.role == 'Teacher'){
+		console.log(req.query.role, req.query.firstName);
 		// var teacher = [];
 		// teacher.FirstName = 'Muktika';
 		// teacher.LastName = 'Poddar';
@@ -157,7 +159,7 @@ app.get('/getSignup', function(req, res) {
 		//   });
 		// });
 
-	//}
+	}
 	//On UI, if response= ok.
 	//teacher or student, display - wait for approval and link to contact us
 	
