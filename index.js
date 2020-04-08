@@ -10,13 +10,20 @@ var mysql = require('mysql');
 
 // var con = mysql.createConnection({
 //   host: "localhost",
-//   user: "myusername",
-//   password: "mypassword"
+//   user: "root",
+//   password: "root",
+//   database: "project"
 // });
 
 // con.connect(function(err) {
 //   if (err) throw err;
 //   console.log("Connected!");
+//   // con.query("CREATE TABLE Cohort(ClassNo varchar (6) NOT NULL PRIMARY KEY ,StartMonth int,StartYear int,EndMonth int,EndYear int,CohortDesc varchar (30))", function (err, result) {
+//   //   if (err) 
+//   //   	console.log("error!");
+//   //   else
+//   //   	console.log("Connected!");
+//   // });
 // });
 
 var result = {};
@@ -115,7 +122,7 @@ app.get('/getSignup', function(req, res) {
 		    
 		//   });
 		// });
-	}elseif(req.query.role == 'TEACHER'){
+	}else if(req.query.role == 'TEACHER'){
 		console.log(req.query.role, req.query.firstName);
 		// var teacher = [];
 		// teacher.FirstName = 'Muktika';
@@ -165,22 +172,21 @@ app.get('/getSignup', function(req, res) {
 	
 });
 
-// app.get('/getTeachers', function(req, res) {
-// 	console.log(req.query);
+app.get('/getTeachers', function(req, res) {
+	
+	con.connect(function(err) {
+	  if (err)
+	  	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
 
-// 	// con.connect(function(err) {
-// 	//   if (err)
-// 	//   	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
+	  con.query("SELECT * FROM users where userID like 'TE%'", function (err, result) {
+		    if (err)
+		    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
 
-// 	//   con.query("SELECT * FROM users where userID like 'TE%'", function (err, result) {
-// 	// 	    if (err)
-// 	// 	    	res.send(JSON.stringify({"status": 404, "error": err, "response": "ERROR"}));
-
-// 	// 	    console.log(result);
-// 	// 	    res.send(JSON.stringify({"status": 200, "response": result}));
-// 	// 	  });
-// 	// 	});
-// });
+		    console.log(result);
+		    res.send(JSON.stringify({"status": 200, "response": result}));
+		  });
+		});
+});
 
 // app.get('/getStudents', function(req, res) {
 // 	console.log(req.query);

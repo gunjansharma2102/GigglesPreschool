@@ -5,6 +5,24 @@ angular.module('app')
   // if($rootScope.userID==undefined||$rootScope.role==undefined){
   //   $state.go('layout.login');
   // }
+
+  $http({
+      method: 'GET',
+      url: '/getTeachers'
+    }).then(function successCallback(response) {
+        console.log(response.data.response);
+        if(response.data == "Error"){
+          //alert("Some error occurred. Try again.");
+          //Redirect with error back to lgin
+        }else{
+          //alert("Process completed! Check result.");
+         
+          //Redirect to Login
+        }
+    }, function errorCallback(error) {
+      console.log(error);
+      //Some error occurred page - 404
+    });
   //based on userID - 
   //get profile detail
   //call for get teachers
