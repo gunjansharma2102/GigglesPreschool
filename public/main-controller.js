@@ -60,7 +60,8 @@ angular.module('app')
 
   $scope.signupSubmit = function(){
     
-    if(baby==true){
+    
+    if($scope.user.category==true){
 
       $http({
               method: 'GET',
