@@ -9,6 +9,12 @@ angular.module('app')
   $scope.baby = false;
   $scope.user=[];
 
+  //forgotPassword page controller var
+  $scope.oldEmail=""
+  $scope.oldUsername=""
+  $scope.newPassword1=""
+  $scope.newPassword2=""
+
 
   $scope.loginSubmit = function(){
 
@@ -104,6 +110,10 @@ angular.module('app')
 
   $scope.fpSubmit = function(){
     //get all fields, usernme, email and new password, put request to update same
+    console.log(  $scope.oldEmail,$scope.oldUsername,
+    $scope.newPassword1,
+    $scope.newPassword2
+  )
 }
 
 }]);
