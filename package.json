@@ -2,6 +2,10 @@
   "name": "main",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "npm": "6.x",
+    "node": "12.4.0"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "http": "0.0.0",
@@ -11,5 +15,9 @@
   "devDependencies": {
     "body-parser": "^1.18.3",
     "request": "^2.88.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "npm install"
   }
 }
